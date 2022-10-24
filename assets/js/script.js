@@ -8,24 +8,6 @@ this.title = title;
 this.author = author;
 }
 }
-function storageAvailable(type) {
-    let storage;
-    try {
-        storage = window[type];
-        const x = '__storage_test__';
-        storage.setItem(x, x);
-        storage.removeItem(x);
-        return true;
-    }
-    catch (e) {
-        return e instanceof DOMException && (
-            e.code === 22 ||
-            e.code === 1014 ||
-            e.name === 'QuotaExceededError' ||
-            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
-            (storage && storage.length !== 0);
-    }
-}
 
 function refreshList() {
 const list= document.getElementById("booksList");
@@ -65,22 +47,17 @@ function fillBook (book) {
         const line= document.createElement("hr")
         booksList.appendChild(line);
         document.getElementById("main").appendChild(booksList);
-        // books.push(book);
-        // localStorage.setItem('books', JSON.stringify(books));
 }
 
 window.onload= () => {
-    if (localStorage.length) {
-      books= JSON.parse(localStorage.getItem('books'));
-      books.forEach(function (b) {
-       fillBook(b);
-      });
-    }
-    else {
     const booksList = document.createElement("div");
     booksList.id="booksList";
     document.getElementById("main").appendChild(booksList);
+    if (localStorage.length) {
+      books= JSON.parse(localStorage.getItem('books'));
+      refreshList();
     }
+    
     const newLine = document.createElement("br");
     const addForm = document.createDocumentFragment();
     const titleInput = document.createElement("input");
