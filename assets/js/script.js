@@ -1,5 +1,8 @@
+const addb = document.getElementById('add');
+
 let books=[];
 const book={title:"",author:""};
+
 function storageAvailable(type) {
     let storage;
     try {
@@ -11,19 +14,14 @@ function storageAvailable(type) {
     }
     catch (e) {
         return e instanceof DOMException && (
-            // everything except Firefox
             e.code === 22 ||
-            // Firefox
             e.code === 1014 ||
-            // test name field too, because code might not be present
-            // everything except Firefox
             e.name === 'QuotaExceededError' ||
-            // Firefox
             e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
-            // acknowledge QuotaExceededError only if there's something already stored
             (storage && storage.length !== 0);
     }
 }
+
 function addBook (book) {
   const booksList = document.createDocumentFragment();
   const title = document.createElement("p");
@@ -39,7 +37,10 @@ function addBook (book) {
         const line= document.createElement("hr")
         booksList.appendChild(line);
         document.getElementById("main").appendChild(booksList);
+        books.push(book);
+        localStorage.setItem('books', JSON.stringify(books));
 }
+
 window.onload= () => {
     if (localStorage.length) {
       books= JSON.parse(localStorage.getItem('books'));
@@ -64,8 +65,18 @@ window.onload= () => {
     const addButton = document.createElement("button");
     addButton.type="button";
     addButton.textContent= "Add";
+    addButton.id="add";
     addForm.appendChild(addButton);
     document.getElementById("main").appendChild(addForm);
 }
 
+function addon() {
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    book.title = title;
+    book.author = author;
+    addBook(book);
+}
 
+
+addb.addEventListener('click', addon);

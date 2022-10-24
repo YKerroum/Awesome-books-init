@@ -31,9 +31,9 @@ Click on index.html
 
 👤 **Author 2**
 
-- GitHub: [@YKerroum](https://github.com/YKerroum)
-- Twitter: [@@kerroum_youssef](https://twitter.com/kerroum_youssef)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/ykerroum/)
+- GitHub: [@whitewolfx99](https://github.com/whiteWolfx99)
+- Twitter: [@@white_wolf100](https://twitter.com/white_wolf100)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/hevar-hoshang-9a7a68237/)
 
 ## 🤝 Contributing
 
