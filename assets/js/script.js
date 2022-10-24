@@ -1,8 +1,13 @@
-const addb = document.getElementById('add');
+let books=new Array();
 
-let books=[];
-const book={title:"",author:""};
-
+class book {
+title="";
+author="";
+constructor(title, author) {
+this.title = title;
+this.author = author;
+}
+}
 function storageAvailable(type) {
     let storage;
     try {
@@ -22,8 +27,31 @@ function storageAvailable(type) {
     }
 }
 
-function addBook (book) {
-  const booksList = document.createDocumentFragment();
+function refreshList() {
+const list= document.getElementById("booksList");
+list.innerHTML = ``;
+  books.forEach(function (b) {
+    const booksList = document.createDocumentFragment();
+    const title = document.createElement("p");
+    title.innerHTML = b.title;
+      booksList.appendChild(title);
+        const author = document.createElement("p");
+        author.innerHTML = b.author;
+        booksList.appendChild(author);
+        const remove = document.createElement("button");
+        remove.type="button";
+        remove.textContent = "Remove";
+        booksList.appendChild(remove);
+        const line= document.createElement("hr")
+        booksList.appendChild(line);
+        list.appendChild(booksList);
+  })
+
+}
+
+function fillBook (book) {
+  const booksList = document.createElement("div");
+  booksList.id="booksList";
   const title = document.createElement("p");
   title.innerHTML = book.title;
       booksList.appendChild(title);
@@ -37,16 +65,21 @@ function addBook (book) {
         const line= document.createElement("hr")
         booksList.appendChild(line);
         document.getElementById("main").appendChild(booksList);
-        books.push(book);
-        localStorage.setItem('books', JSON.stringify(books));
+        // books.push(book);
+        // localStorage.setItem('books', JSON.stringify(books));
 }
 
 window.onload= () => {
     if (localStorage.length) {
       books= JSON.parse(localStorage.getItem('books'));
-      books.forEach(book => {
-       addBook(book);
+      books.forEach(function (b) {
+       fillBook(b);
       });
+    }
+    else {
+    const booksList = document.createElement("div");
+    booksList.id="booksList";
+    document.getElementById("main").appendChild(booksList);
     }
     const newLine = document.createElement("br");
     const addForm = document.createDocumentFragment();
@@ -66,6 +99,7 @@ window.onload= () => {
     addButton.type="button";
     addButton.textContent= "Add";
     addButton.id="add";
+    addButton.setAttribute('onclick','addon()');
     addForm.appendChild(addButton);
     document.getElementById("main").appendChild(addForm);
 }
@@ -73,10 +107,9 @@ window.onload= () => {
 function addon() {
     const title = document.getElementById("title").value;
     const author = document.getElementById("author").value;
-    book.title = title;
-    book.author = author;
-    addBook(book);
+    books.push(new book(title, author));
+    localStorage.setItem('books', JSON.stringify(books));
+    refreshList();
 }
 
 
-addb.addEventListener('click', addon);
