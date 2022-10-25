@@ -12,6 +12,7 @@ this.author = author;
 function refreshList() {
 const list= document.getElementById("booksList");
 list.innerHTML = ``;
+let i=0;
   books.forEach(function (b) {
     const booksList = document.createDocumentFragment();
     const title = document.createElement("p");
@@ -23,30 +24,14 @@ list.innerHTML = ``;
         const remove = document.createElement("button");
         remove.type="button";
         remove.textContent = "Remove";
+        remove.className="remove";
+        remove.setAttribute('onclick','removeBook('+i+')');
         booksList.appendChild(remove);
         const line= document.createElement("hr")
         booksList.appendChild(line);
         list.appendChild(booksList);
+        i++;
   })
-
-}
-
-function fillBook (book) {
-  const booksList = document.createElement("div");
-  booksList.id="booksList";
-  const title = document.createElement("p");
-  title.innerHTML = book.title;
-      booksList.appendChild(title);
-        const author = document.createElement("p");
-        author.innerHTML = book.author;
-        booksList.appendChild(author);
-        const remove = document.createElement("button");
-        remove.type="button";
-        remove.textContent = "Remove";
-        booksList.appendChild(remove);
-        const line= document.createElement("hr")
-        booksList.appendChild(line);
-        document.getElementById("main").appendChild(booksList);
 }
 
 window.onload= () => {
@@ -82,11 +67,21 @@ window.onload= () => {
 }
 
 function addon() {
-    const title = document.getElementById("title").value;
-    const author = document.getElementById("author").value;
+
+    const titleInp = document.getElementById("title");
+    const authorInp = document.getElementById("author");
+    const title = titleInp.value;
+const author= authorInp.value;
     books.push(new book(title, author));
     localStorage.setItem('books', JSON.stringify(books));
     refreshList();
+    titleInp.value="";
+    authorInp.value="";
+}
+function removeBook(id) {
+  books.splice(id,1);
+  localStorage.setItem('books', JSON.stringify(books));
+  refreshList();
 }
 
 
