@@ -1,11 +1,102 @@
-#formBook {
-  width: fit-content;
-  display: flex;
-  gap: 10px;
-  flex-direction: column;
-  justify-content: space-around;
+body {
+  background-color: #fff;
 }
 
-#submitBtn {
-  width: fit-content;
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.showbook {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.booklist {
+  width: 30%;
+  border: 3px solid black;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.addbokss {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.formadd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.btn-white {
+  background-color: #fff;
+}
+
+.input-white {
+  background-color: #fff;
+  border: 3px solid black;
+}
+
+.grey {
+  background-color: gainsboro;
+}
+
+.booksList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.booksLine {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 1.7rem;
+}
+
+.booksLine span {
+  margin-left: 5px;
+  align-self: center;
+}
+
+.btn-remove {
+  height: 80%;
+  align-self: center;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  margin-right: 10px;
+  background-color: white;
+  border: 2px solid black;
+  box-shadow: 3px 3px black;
+}
+
+.btn-remove:hover {
+  background-color: rgba(255, 255, 255, 0.559);
+}
+
+.btn-remove:active {
+  background-color: rgba(255, 255, 255, 0.559);
+  box-shadow: 1px 1px black;
+  transform: translateY(2px);
 }

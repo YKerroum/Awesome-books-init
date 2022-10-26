@@ -1,19 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Awesome books</title>
-    <script src="assets/js/script.js"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
     <header>
-    <h1>Awesome books</h1>
+      <div class="header">
+        <h1>Awesome books</h1>
+      </div>
     </header>
-    <main id="main">
-    
-    </main>
-</body>
+
+    <section class="container">
+      <div class="showbook">
+        <div class="booklist">
+            <div class="AllB">
+
+            </div>
+        </div>
+
+
+          <div class="addbokss">
+              <h2>Add a new books</h2>
+                <form action="#" id="form" class="formadd">
+
+                  <input class="input-white" type="text" name="Title" id="title" placeholder="title" />
+
+                  <input class="input-white" type="text" name="Author" id="author" placeholder="author" />
+
+                  <input
+                    type="submit"
+                    name="submit"
+                    id="submit"
+                    value="Add"
+                    class="btn-white"
+                    onclick="storagebook.addbook()"
+                  />
+                </form>
+            </div>
+    </section>
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>
