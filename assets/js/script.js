@@ -1,4 +1,34 @@
+const listb = document.getElementById('list-b');
+const addnewb = document.getElementById('addnew-b');
+const contactb = document.getElementById('Contact-b');
+
+const closebook = document.getElementById('showbookclose');
+const closeaddbook = document.getElementById('addbooksclose');
+const closecontact = document.getElementById('contactclose');
+
+const timecontainer = document.getElementById('time-update');
 const bo = document.querySelector('.AllB');
+
+function nth(d) {
+  if (d > 3 && d < 21) return 'th';
+  switch (d % 10) {
+    case 1: return 'st';
+    case 2: return 'nd';
+    case 3: return 'rd';
+    default: return 'th';
+  }
+}
+function formatAMPM(date) {
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  const seconds = date.getSeconds();
+  const ampm = hours >= 12 ? 'pm' : 'am';
+  hours %= 12;
+  hours = hours || 12;
+  minutes = minutes.toString().padStart(2, '0');
+  const strTime = `${hours}:${minutes}:${seconds} ${ampm}`;
+  return strTime;
+}
 
 class BookClass {
   constructor() {
@@ -31,6 +61,12 @@ class BookClass {
       </li>`;
       id += 1;
     });
+    listb.classList.add('active');
+    const d = new Date();
+    const date = d.getDate();
+    const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][d.getMonth()];
+    const year = d.getFullYear();
+    timecontainer.innerHTML = `${month} ${date}${nth(date)} ${year}, ${formatAMPM(d)}`;
   }
 
   updateLocalStorage() {
@@ -42,3 +78,34 @@ class BookClass {
 const storagebook = new BookClass();
 
 storagebook.showbooks();
+
+function listopen() {
+  closebook.classList.remove('hidden');
+  closeaddbook.classList.add('hidden');
+  closecontact.classList.add('hidden');
+  listb.classList.add('active');
+  addnewb.classList.remove('active');
+  contactb.classList.remove('active');
+}
+
+function addnewopen() {
+  closebook.classList.add('hidden');
+  closeaddbook.classList.remove('hidden');
+  closecontact.classList.add('hidden');
+  listb.classList.remove('active');
+  addnewb.classList.add('active');
+  contactb.classList.remove('active');
+}
+
+function contactopen() {
+  closebook.classList.add('hidden');
+  closeaddbook.classList.add('hidden');
+  closecontact.classList.remove('hidden');
+  listb.classList.remove('active');
+  addnewb.classList.remove('active');
+  contactb.classList.add('active');
+}
+
+listb.addEventListener('click', listopen);
+addnewb.addEventListener('click', addnewopen);
+contactb.addEventListener('click', contactopen);

@@ -11,38 +11,95 @@
   <body>
     <header>
       <div class="header">
-        <h1>Awesome books</h1>
+          <div class="logo">
+            <span>Awesome Books</span>
+          </div>
+
+          <ul class="links">
+             <li id="list-b" class="link">List</li>
+             <li id="addnew-b" class="link">Add new</li>
+             <li id="Contact-b" >Contact</li>
+          </ul>
       </div>
+      <time id="time-update"></time>
     </header>
 
-    <section class="container">
-      <div class="showbook">
-        <div class="booklist">
-            <div class="AllB">
+    <section>
+      
+    <div id="showbookclose" class="showbook">
+      <h1>All awesome books</h1>
+      <div class="booklist">
+        <div class="AllB"></div>
+      </div>
+    </div>
 
-            </div>
-        </div>
+    <div id="addbooksclose" class="addbokss hidden">
+      <h2>Add a new books</h2>
+      <form action="#" id="form" class="formadd">
+        <input
+          class="input-white"
+          type="text"
+          name="Title"
+          id="title"
+          placeholder="title"
+        />
 
+        <input
+          class="input-white"
+          type="text"
+          name="Author"
+          id="author"
+          placeholder="author"
+        />
 
-          <div class="addbokss">
-              <h2>Add a new books</h2>
-                <form action="#" id="form" class="formadd">
+        <input
+          type="submit"
+          name="submit"
+          id="submit"
+          value="Add"
+          class="btn-white"
+          onclick="storagebook.addbook()"
+        />
+      </form>
+    </div>
 
-                  <input class="input-white" type="text" name="Title" id="title" placeholder="title" />
+    <div id="contactclose" class="contact hidden">
+      <div class="Contact-header">
+        <h2>Contact Information</h2>
+      </div>
 
-                  <input class="input-white" type="text" name="Author" id="author" placeholder="author" />
+      <div class="contact-info">
+        <p>
+          Do have any questions or you just or you want to say "Hello"? You can
+          reach out to us!
+        </p>
+      </div>
 
-                  <input
-                    type="submit"
-                    name="submit"
-                    id="submit"
-                    value="Add"
-                    class="btn-white"
-                    onclick="storagebook.addbook()"
-                  />
-                </form>
-            </div>
+      <div class="adress">
+        <ul>
+          <li>Our e-mail: Hevarkas@gmail.com</li>
+
+          <li>Our phone number: +964 770 469 9094</li>
+
+          <li>Our address: Erbil, Iraq</li>
+        </ul>
+        <ul>
+          <li>Our e-mail: Camarad21@gmail.com</li>
+
+          <li>Our phone number: +212 654 737905</li>
+
+          <li>Our address: Laayoune, Morocco</li>
+        </ul>
+      </div>
+    </div>
     </section>
+
+    <footer>
+      <div class="footer">
+        <p>Copyright -</p>
+      </div>
+    </footer>
+
     <script src="assets/js/script.js"></script>
   </body>
 </html>
