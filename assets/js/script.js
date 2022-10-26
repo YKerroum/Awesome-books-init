@@ -18,14 +18,17 @@ class BookClass {
   }
 
   showbooks() {
+    const ulist = document.createElement('ul');
+    ulist.className = 'booksList';
     bo.innerHTML = '';
+    bo.appendChild(ulist);
     let id = 0;
     this.AllBooks.forEach((book) => {
-      bo.innerHTML
-      += `<tr class="grey">
-       <td>"${book.title}" by ${book.author}</td>
-      <td><a href="#" class="btn-remove" onClick="storagebook.destroybook(${id})">Remove</a></td>
-      </tr>`;
+      ulist.innerHTML
+      += `<li class="booksLine ${id % 2 === 0 ? 'grey' : ''}">
+      <span>"${book.title}" by ${book.author}</span>
+      <button type="button" class="btn-remove" onClick="storagebook.destroybook(${id})">Remove</button>
+      </li>`;
       id += 1;
     });
   }
