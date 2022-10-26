@@ -8,17 +8,17 @@ class BookClass {
   addbook() {
     const title = document.getElementById('title');
     const author = document.getElementById('author');
-      this.AllBooks.push({ title: title.value, author: author.value });
-      this.updateLocalStorage();
+    this.AllBooks.push({ title: title.value, author: author.value });
+    this.updateLocalStorage();
   }
 
   destroybook(id) {
     this.AllBooks.splice(id, 1);
     this.updateLocalStorage();
   }
-  
+
   showbooks() {
-    bo.innerHTML ='';
+    bo.innerHTML = '';
     let id = 0;
     this.AllBooks.forEach((book) => {
       bo.innerHTML
