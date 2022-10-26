@@ -1,12 +1,14 @@
+const bo = document.querySelector('.AllB');
+
 class BookClass {
   constructor() {
     this.AllBooks = (localStorage.storagebook != null) ? JSON.parse(localStorage.storagebook) : [];
   }
 
   addbook() {
-    const Title = document.getElementById('title');
-    const Author = document.getElementById('author');
-      this.AllBooks.push({ Title: Title.value, Author: Author.value });
+    const title = document.getElementById('title');
+    const author = document.getElementById('author');
+      this.AllBooks.push({ title: title.value, author: author.value });
       this.updateLocalStorage();
   }
 
@@ -16,13 +18,12 @@ class BookClass {
   }
   
   showbooks() {
-    const AllBooks = document.getElementById('AllBooks');
-    AllBooks.innerHTML = '';
+    bo.innerHTML ='';
     let id = 0;
     this.AllBooks.forEach((book) => {
-      AllBooks.innerHTML
+      bo.innerHTML
       += `<tr>
-       <td>"${book.Title}" by ${book.Author}</td>
+       <td>"${book.title}" by ${book.author}</td>
       <td><a href="#" class="btn-remove" onClick="storagebook.destroybook(${id})">Remove</a></td>
       </tr>`;
       id += 1;
@@ -38,6 +39,3 @@ class BookClass {
 const storagebook = new BookClass();
 
 storagebook.showbooks();
-
-
-if (storagebook.AllBooks.length !== 0) { TitleThread.innerHTML = ''; }
