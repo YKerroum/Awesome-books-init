@@ -22,7 +22,7 @@ class BookClass {
     let id = 0;
     this.AllBooks.forEach((book) => {
       bo.innerHTML
-      += `<tr>
+      += `<tr class="grey">
        <td>"${book.title}" by ${book.author}</td>
       <td><a href="#" class="btn-remove" onClick="storagebook.destroybook(${id})">Remove</a></td>
       </tr>`;
