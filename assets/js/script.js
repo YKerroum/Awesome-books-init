@@ -1,3 +1,12 @@
+const listb = document.getElementById('list-b');
+const addnewb = document.getElementById('addnew-b');
+const contactb = document.getElementById('Contact-b');
+
+const closebook = document.getElementById('showbookclose');
+const closeaddbook = document.getElementById('addbooksclose');
+const closecontact = document.getElementById('contactclose');
+
+
 const bo = document.querySelector('.AllB');
 
 class BookClass {
@@ -42,3 +51,25 @@ class BookClass {
 const storagebook = new BookClass();
 
 storagebook.showbooks();
+
+function listopen() {
+  closebook.classList.remove('hidden');
+  closeaddbook.classList.add('hidden');
+  closecontact.classList.add('hidden');
+}
+
+function addnewopen() {
+  closebook.classList.add('hidden');
+  closeaddbook.classList.remove('hidden');
+  closecontact.classList.add('hidden');
+}
+
+function contactopen() {
+  closebook.classList.add('hidden');
+  closeaddbook.classList.add('hidden');
+  closecontact.classList.remove('hidden');
+}
+
+listb.addEventListener('click', listopen);
+addnewb.addEventListener('click', addnewopen);
+contactb.addEventListener('click', contactopen);
